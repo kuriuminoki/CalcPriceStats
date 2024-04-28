@@ -11,17 +11,7 @@
 using namespace std;
 
 
-void test(CsvReader* reader) {
-	string name = "和牛入り特選肉寿司8貫";
-	map<string, string> test = reader->findOne("INPUT1:", "Name", name.c_str());
-
-	string value = test["出荷"];
-
-	cout << value << endl;
-}
-
-
-void calcTest(Calculator* calculator) {
+void calcAndPrint(Calculator* calculator) {
 	cout << "出荷１　: " << round(calculator->shipping1()) << endl;
 	cout << "出荷２　: " << round(calculator->shipping2()) << endl;
 	cout << "出荷合計: " << round(calculator->shippingSum()) << endl;
@@ -45,14 +35,16 @@ int main() {
 	cin >> dirName;
 	string path = "resources/" + dirName + "/input.csv";
 
+	// 入力を読み込む
 	CsvReader* reader;
 	reader = new CsvReader(path.c_str());
 
+	// 計算し標準出力
 	Calculator* calculator;
 	calculator = new Calculator(reader);
-
-	calcTest(calculator);
+	calcAndPrint(calculator);
 
 	delete reader;
+	delete calculator;
 
 }
