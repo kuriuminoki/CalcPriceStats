@@ -1,0 +1,6 @@
+resources/
+x64/
+Calculator.vcxproj.user
+Log.txt
+.vs/
+*.xlsx
