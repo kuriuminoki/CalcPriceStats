@@ -30,21 +30,24 @@ void calcAndPrint(Calculator* calculator) {
 
 int main() {
 
-	string dirName;
-	cout << "フォルダ名を入力：" << flush;
-	cin >> dirName;
-	string path = "resources/" + dirName + "/input.csv";
+	while (true) {
+		string dirName;
+		cout << "フォルダ名を入力：" << flush;
+		cin >> dirName;
+		string path = "resources/" + dirName + "/input.csv";
 
-	// 入力を読み込む
-	CsvReader* reader;
-	reader = new CsvReader(path.c_str());
+		// 入力を読み込む
+		CsvReader* reader;
+		reader = new CsvReader(path.c_str());
 
-	// 計算し標準出力
-	Calculator* calculator;
-	calculator = new Calculator(reader);
-	calcAndPrint(calculator);
+		// 計算し標準出力
+		Calculator* calculator;
+		calculator = new Calculator(reader);
+		calcAndPrint(calculator);
 
-	delete reader;
-	delete calculator;
+		delete reader;
+		delete calculator;
+		cout << endl;
+	}
 
 }
